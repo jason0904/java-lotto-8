@@ -3,9 +3,8 @@ package lotto.model;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import lotto.validation.WinningNumberValidation;
-import lotto.validation.LottoValidation;
+import lotto.validation.ErrorMessage;
+import lotto.validation.LottoRule;
 
 public class WinningNumber {
 
@@ -19,11 +18,31 @@ public class WinningNumber {
     }
     
     private void validate(List<String> input) {
-        LottoValidation.validateLottoSize(input.size());
+        validateLottoSize(input.size());
 
         for(String number : input) {
-            WinningNumberValidation.validateNumberIsInteger(number);
-            WinningNumberValidation.validateNumberRange(Integer.parseInt(number));
+            validateNumberIsInteger(number);
+            validateNumberRange(Integer.parseInt(number));
+        }
+    }
+
+    public static void validateLottoSize(int size) {
+        if (size != LottoRule.LOTTO_SIZE.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_COUNT.getMessage());
+        }
+    }
+
+    public static void validateNumberIsInteger(String numberText) {
+        try {
+            Integer.parseInt(numberText);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage());
+        }
+    }
+
+    public static void validateNumberRange(int number) {
+        if (number < LottoRule.MIN_NUMBER.getValue() || number > LottoRule.MAX_NUMBER.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_RANGE.getMessage());
         }
     }
 
