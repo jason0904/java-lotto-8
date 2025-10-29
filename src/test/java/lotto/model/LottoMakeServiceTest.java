@@ -30,7 +30,7 @@ public class LottoMakeServiceTest {
     @DisplayName("로또 여러장 생성 서비스 테스트")
     void testLottoMakeMultipleService() {
         LottoMakeService lottoMakeService = new LottoMakeService();
-        int count = 5;
+        Long count = 5L;
         LottoRepository lottoRepository = lottoMakeService.makeLottos(count);
 
         assertEquals(lottoRepository.getLottos().size(), count);

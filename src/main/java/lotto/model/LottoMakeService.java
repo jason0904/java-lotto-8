@@ -17,8 +17,8 @@ public class LottoMakeService {
         return new Lotto(lottoNumbers);
     }
 
-    public LottoRepository makeLottos(int count) {
-        List<Lotto> lottos = new ArrayList<>(count);
+    public LottoRepository makeLottos(Long count) {
+        List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             lottos.add(makeLotto());
         }
