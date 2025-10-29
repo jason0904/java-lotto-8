@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class LottoRepository {
     
@@ -12,7 +13,7 @@ public class LottoRepository {
     }
 
     public List<Lotto> getLottos() {
-        return lottos;
+        return Collections.unmodifiableList(lottos);
     }
 
 }
