@@ -24,7 +24,7 @@ public class PurchaseAmountTest {
             new PurchaseAmount("-1000");
         });
 
-        assertEquals(ErrorMessage.ERROR_PURCHASE_AMOUNT_POSITIVE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.PURCHASE_AMOUNT_POSITIVE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -34,7 +34,7 @@ public class PurchaseAmountTest {
             new PurchaseAmount("0");
         });
 
-        assertEquals(ErrorMessage.ERROR_PURCHASE_AMOUNT_ZERO.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.PURCHASE_AMOUNT_ZERO.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class PurchaseAmountTest {
             new PurchaseAmount("1500");
         });
 
-        assertEquals(ErrorMessage.ERROR_PURCHASE_AMOUNT_UNIT.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.PURCHASE_AMOUNT_UNIT.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class PurchaseAmountTest {
             new PurchaseAmount("9223372036854775808"); // Long.MAX_VALUE + 1을 문자열로 표현
         });
 
-        assertEquals(ErrorMessage.ERROR_PURCHASE_AMOUNT_MAX.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.PURCHASE_AMOUNT_MAX.getMessage(), exception.getMessage());
     }
 
 }

@@ -16,19 +16,19 @@ public class PurchaseAmount {
         try {
             validatePurchaseAmount = Long.parseLong(purchaseAmountText);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PURCHASE_AMOUNT_MAX.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_MAX.getMessage());
         }
 
         if(validatePurchaseAmount < 0) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PURCHASE_AMOUNT_POSITIVE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_POSITIVE.getMessage());
         }
 
         if(validatePurchaseAmount == 0) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PURCHASE_AMOUNT_ZERO.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_ZERO.getMessage());
         }
 
         if(validatePurchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_PURCHASE_AMOUNT_UNIT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_UNIT.getMessage());
         }
 
     }
