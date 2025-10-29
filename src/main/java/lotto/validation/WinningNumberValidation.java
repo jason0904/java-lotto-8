@@ -1,6 +1,6 @@
 package lotto.validation;
 
-public class LottoNumberValidation {
+public class WinningNumberValidation {
 
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
@@ -9,13 +9,13 @@ public class LottoNumberValidation {
         try {
             Integer.parseInt(numberText);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage());
         }
     }
 
     public static void validateNumberRange(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_RANGE.getMessage());
         }
     }
 

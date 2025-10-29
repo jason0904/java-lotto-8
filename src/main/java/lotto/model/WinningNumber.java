@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import lotto.validation.LottoNumberValidation;
+import lotto.validation.WinningNumberValidation;
 import lotto.validation.LottoValidation;
 
 public class WinningNumber {
@@ -22,13 +22,13 @@ public class WinningNumber {
         LottoValidation.validateLottoSize(input.size());
 
         for(String number : input) {
-            LottoNumberValidation.validateNumberIsInteger(number);
-            LottoNumberValidation.validateNumberRange(Integer.parseInt(number));
+            WinningNumberValidation.validateNumberIsInteger(number);
+            WinningNumberValidation.validateNumberRange(Integer.parseInt(number));
         }
     }
 
     public List<Integer> getWinningNumbers() {
         return Collections.unmodifiableList(winningNumbers);
     }
-    
+
 }
