@@ -10,7 +10,8 @@ public enum ErrorMessage {
     ERROR_LOTTO_NUMBER(() -> String.format("로또 번호는 %d부터 %d 사이의 정수여야 합니다.", LottoNumberValidation.MIN_NUMBER, LottoNumberValidation.MAX_NUMBER)),
     ERROR_LOTTO_NUMBER_COUNT(() -> "로또 번호는 6개여야 합니다."),
     ERROR_DUPLICATE_LOTTO_NUMBER(() -> "로또 번호는 중복될 수 없습니다."),
-    ERROR_BONUS_NUMBER(() -> "보너스 번호는 로또 번호와 중복될 수 없습니다.");
+    ERROR_WINNING_NUMBER_FORMAT(() -> "당첨 번호는 쉼표(,)로 구분된 숫자여야 합니다."),
+    ERROR_BONUS_NUMBER(() -> "보너스 번호는 당첨 번호와 중복될 수 없습니다.");
 
     private static final String ERROR_MARK = "[ERROR]";
     private final Supplier<String> messageSupplier;
