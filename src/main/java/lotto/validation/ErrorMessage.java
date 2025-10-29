@@ -12,7 +12,9 @@ public enum ErrorMessage {
     LOTTO_SIZE(() -> "로또 번호는 6개여야 합니다."),
     DUPLICATE_WINNING_NUMBER(() -> "당첨 번호는 중복될 수 없습니다."),
     WINNING_NUMBER_FORMAT(() -> "당첨 번호는 쉼표(,)로 구분된 숫자여야 합니다."),
-    DUPLICATE_BONUS_NUMBER(() -> "보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+    DUPLICATE_BONUS_NUMBER(() -> "보너스 번호는 당첨 번호와 중복될 수 없습니다."),
+    STRING_STARTS_WITH_COMMA(() -> "입력 값은 쉼표(,)로 시작할 수 없습니다."),
+    STRING_ENDS_WITH_COMMA(() -> "입력 값은 쉼표(,)로 끝날 수 없습니다.");
 
     private static final String ERROR_MARK = "[ERROR]";
     private final Supplier<String> messageSupplier;
