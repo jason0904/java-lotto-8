@@ -1,6 +1,7 @@
 package lotto.model;
 
 import lotto.validation.ErrorMessage;
+import lotto.validation.LottoRule;
 
 public class PurchaseAmount {
     private final Long purchaseAmount;
@@ -11,26 +12,36 @@ public class PurchaseAmount {
     }
 
     private void validate(String purchaseAmountText) {
-        Long validatePurchaseAmount = 0L;
-        
-        try {
-            validatePurchaseAmount = Long.parseLong(purchaseAmountText);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_MAX.getMessage());
-        }
+        validateAmountIsLong(purchaseAmount);
+        validatePositiveAmount(purchaseAmount);
+        validateZeroAmount(purchaseAmount);
+        validateUnitAmount(purchaseAmount);
+    }
 
-        if(validatePurchaseAmount < 0) {
+    private void validatePositiveAmount(Long purchaseAmount) {
+        if(purchaseAmount < 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_POSITIVE.getMessage());
         }
+    }
 
-        if(validatePurchaseAmount == 0) {
+    private void validateZeroAmount(Long purchaseAmount) {
+        if(purchaseAmount == 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_ZERO.getMessage());
         }
+    }
 
-        if(validatePurchaseAmount % 1000 != 0) {
+    private void validateAmountIsLong(Long purchaseAmount) {
+        try {
+            Long.parseLong(String.valueOf(purchaseAmount));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_NOT_LONG.getMessage());
+        }
+    }
+
+    private void validateUnitAmount(Long purchaseAmount) {
+        if(purchaseAmount % LottoRule.PURCHASE_UNIT.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_UNIT.getMessage());
         }
-
     }
 
     public Long getPurchaseAmount() {
