@@ -8,7 +8,7 @@ public class PurchaseAmount {
 
     public PurchaseAmount(String purchaseAmountText) {
         validate(purchaseAmountText);
-        purchaseAmount = Long.parseLong(purchaseAmountText);
+        purchaseAmount = Long.parseLong(purchaseAmountText) / LottoRule.PURCHASE_UNIT.getValue();
     }
 
     private void validate(String purchaseAmountText) {

@@ -16,7 +16,7 @@ public class PurchaseAmountTest {
     @DisplayName("구입 금액 생성 테스트")
     void testPurchaseAmountCreation() {
         PurchaseAmount purchaseAmount = new PurchaseAmount("5000");
-        assertEquals(purchaseAmount.getPurchaseAmount(), 5000L);
+        assertEquals(purchaseAmount.getPurchaseAmount(), 5L);
     }
 
     @Test
