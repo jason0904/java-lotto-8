@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lotto.validation.LottoNumberValidation;
-import lotto.validation.LottoValidation;
+import lotto.validation.ErrorMessage;
+import lotto.validation.LottoRule;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,10 +17,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        LottoValidation.validateLottoSize(numbers.size());
-
-        for(Integer number : numbers) {
-            LottoNumberValidation.validateNumberRange(number);
+        if (numbers.size() != LottoRule.LOTTO_SIZE.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE.getMessage());
         }
     }
 
