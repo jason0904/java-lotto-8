@@ -17,9 +17,9 @@ public class WinningRepository {
         }
     }
 
-    public void setCount(WinningCondition winningCondition, Long count) {
+    public void addCount(WinningCondition winningCondition) {
         Objects.requireNonNull(winningCondition);
-        winningCounts.put(winningCondition, count);
+        winningCounts.put(winningCondition, winningCounts.getOrDefault(winningCondition, 0L) + 1L);
     }
 
     public Map<WinningCondition, Long> getAllCounts() {
