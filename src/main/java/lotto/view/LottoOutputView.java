@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class LottoOutputView {
 
     public void printLottos(LottoRepository lottoRepository, PurchaseAmount purchaseAmount) {
-        System.out.printf("\n%d개를 구매하였습니다.\n", purchaseAmount.getPurchaseAmount() / 1000 );
+        System.out.printf("\n%d개를 구매했습니다.\n", purchaseAmount.getPurchaseAmount() / 1000 );
         for (Lotto lotto : lottoRepository.getLottos()) {
             String numbers = lotto.getNumbers().stream()
                     .map(String::valueOf)
@@ -34,7 +34,7 @@ public class LottoOutputView {
     }
 
     public void printProfitRate(double profitRate) {
-        System.out.printf("총 수익률은 %.2f%%입니다.\n", profitRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", profitRate);
     }
 
     public void printNewLine() {
