@@ -16,9 +16,9 @@ public class LottoRepositoryTest {
         Lotto lotto2 = new Lotto(List.of(7,8,9,10,11,12));
         LottoRepository lottoRepository = new LottoRepository(List.of(lotto1, lotto2));
 
-        assertEquals(lottoRepository.getLottos().size(), 2);
+        assertEquals(2, lottoRepository.getLottos().size());
 
-        assertEquals(lottoRepository.getLottos().get(0).getNumbers(), List.of(1,2,3,4,5,6));
-        assertEquals(lottoRepository.getLottos().get(1).getNumbers(), List.of(7,8,9,10,11,12));
+        assertEquals(List.of(1,2,3,4,5,6), lottoRepository.getLottos().get(0).getNumbers());
+        assertEquals(List.of(7,8,9,10,11,12), lottoRepository.getLottos().get(1).getNumbers());
     }
 }
