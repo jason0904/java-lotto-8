@@ -18,18 +18,21 @@ public class LotteryCheckService {
     }
 
     public void lotteryCheck() {
-        for(WinningCondition winningCondition : WinningCondition.values()) {
-            winningRepository.setCount(winningCondition, checkTheWinningConditions(winningCondition));
+        for(Lotto lotto : lottoRepository.getLottos()) {
+            checkConditions(lotto);
         }
     }
 
-    public Long checkTheWinningConditions(WinningCondition winningCondition) {
-        return lottoRepository.getLottos().stream()
-            .filter(lotto -> lottoMatchCondition(lotto, winningCondition))
-            .count();
+    public void checkConditions(Lotto lotto) {
+        for(WinningCondition winningCondition : WinningCondition.values()) {
+            if(checkMatchCondition(lotto, winningCondition)) {
+                winningRepository.addCount(winningCondition);
+                return;
+            }
+        }
     }
 
-    private boolean lottoMatchCondition(Lotto lotto, WinningCondition winningCondition) {
+    public boolean checkMatchCondition(Lotto lotto, WinningCondition winningCondition) {
         int matchCount = (int) lotto.getNumbers().stream()
             .filter(number -> winningNumber.getWinningNumbers().contains(number))
             .count();
