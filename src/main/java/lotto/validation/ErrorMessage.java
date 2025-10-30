@@ -2,6 +2,8 @@ package lotto.validation;
 
 import java.util.function.Supplier;
 
+import lotto.config.LottoRule;
+
 public enum ErrorMessage {
     PURCHASE_AMOUNT_UNIT(() -> "구입 금액은 1,000원 단위로 입력해야 합니다."),
     PURCHASE_AMOUNT_POSITIVE(() -> "구입 금액은 양수여야 합니다."),

@@ -1,4 +1,4 @@
-package lotto.validation;
+package lotto.config;
 
 public enum LottoRule {
     LOTTO_SIZE(6),

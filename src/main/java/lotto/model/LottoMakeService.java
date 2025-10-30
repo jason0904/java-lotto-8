@@ -1,11 +1,10 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.config.LottoRule;
 
 import java.util.List;
 import java.util.ArrayList;
-
-import lotto.validation.LottoRule;
 
 public class LottoMakeService {
 

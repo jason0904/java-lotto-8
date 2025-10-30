@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
-import lotto.validation.LottoRule;
 
 public class Lotto {
     private final List<Integer> numbers;

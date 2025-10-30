@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-import lotto.validation.LottoRule;
+import lotto.config.LottoRule;
 
 import org.junit.jupiter.api.DisplayName;
 

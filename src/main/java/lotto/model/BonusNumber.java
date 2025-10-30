@@ -1,7 +1,7 @@
 package lotto.model;
 
+import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
-import lotto.validation.LottoRule;
 
 public class BonusNumber {
 

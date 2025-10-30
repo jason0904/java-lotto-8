@@ -8,8 +8,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.api.DisplayName;
 
+import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
-import lotto.validation.LottoRule;
 
 import java.util.List;
 

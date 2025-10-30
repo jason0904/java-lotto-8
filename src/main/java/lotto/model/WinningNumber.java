@@ -3,8 +3,9 @@ package lotto.model;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
-import lotto.validation.LottoRule;
 
 public class WinningNumber {
 
