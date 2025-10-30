@@ -25,8 +25,8 @@ public class WinningRepositoryTest {
         WinningRepository winningRepository = new WinningRepository();
         assertEquals(winningRepository.getAllCounts().get(WinningCondition.FIRST), 0L);
 
-        winningRepository.addCount(WinningCondition.FIRST);
+        winningRepository.setCount(WinningCondition.FIRST, 1L);
         assertEquals(winningRepository.getAllCounts().get(WinningCondition.FIRST), 1L);
     }
-    
+
 }
