@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class LottoOutputView {
 
     public void printLottos(LottoRepository lottoRepository, PurchaseAmount purchaseAmount) {
-        System.out.printf("%d개를 구매하였습니다.\n", purchaseAmount.getPurchaseAmount());
+        System.out.printf("%d개를 구매하였습니다.\n", purchaseAmount.getPurchaseAmount() / 1000 );
         for (Lotto lotto : lottoRepository.getLottos()) {
             String numbers = lotto.getNumbers().stream()
                     .map(String::valueOf)
