@@ -9,9 +9,9 @@ import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
 import lotto.model.BonusNumber;
 import lotto.model.LotteryCheckService;
-import lotto.model.Lotto;
 import lotto.model.LottoMakeService;
 import lotto.model.LottoRepository;
+import lotto.model.LottoProfitService;
 
 public class LottoController {
 
@@ -19,13 +19,15 @@ public class LottoController {
     private final LottoOutputView lottoOutputView;
     private final LottoMakeService lottoMakeService;
     private final LotteryCheckService lotteryCheckService;
+    private final LottoProfitService lottoProfitService;
 
     public LottoController(LottoInputView lottoInputView, LottoOutputView lottoOutputView,
-            LottoMakeService lottoMakeService, LotteryCheckService lotteryCheckService) {
+            LottoMakeService lottoMakeService, LotteryCheckService lotteryCheckService, LottoProfitService lottoProfitService) {
         this.lottoInputView = lottoInputView;
         this.lottoOutputView = lottoOutputView;
         this.lottoMakeService = lottoMakeService;
         this.lotteryCheckService = lotteryCheckService;
+        this.lottoProfitService = lottoProfitService;
     }
 
     public void run() {
@@ -36,6 +38,7 @@ public class LottoController {
         BonusNumber bonusNumber = errorCatch(() -> lottoInputView.bonusNumberInput(winningNumber));
         WinningRepository winningRepository = lotteryCheck(lottoRepository, winningNumber, bonusNumber);
 
+        printProfitRate(purchaseAmount, winningRepository);
     }
 
     private LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
@@ -51,6 +54,11 @@ public class LottoController {
         lottoOutputView.printLotteryResult(winningRepository);
 
         return winningRepository;
+    }
+
+    private void printProfitRate(PurchaseAmount purchaseAmount, WinningRepository winningRepository) {
+        double profitRate = lottoProfitService.calculateProfitRate(purchaseAmount, winningRepository);
+        lottoOutputView.printProfitRate(profitRate);
     }
 
     private <T> T errorCatch(Supplier<T> function) {
