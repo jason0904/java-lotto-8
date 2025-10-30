@@ -29,4 +29,18 @@ public class WinningRepositoryTest {
         assertEquals(winningRepository.getAllCounts().get(WinningCondition.FIRST), 1L);
     }
 
+    @Test
+    @DisplayName("WinningRepository 총 상금 계산 테스트")
+    void testGetTotalPrize() {
+        WinningRepository winningRepository = new WinningRepository();
+        winningRepository.addCount(WinningCondition.FIRST);
+        winningRepository.addCount(WinningCondition.SECOND);
+        winningRepository.addCount(WinningCondition.THIRD);
+
+        Long expectedTotalPrize = WinningCondition.FIRST.getPrize() + WinningCondition.SECOND.getPrize()
+                + WinningCondition.THIRD.getPrize();
+
+        assertEquals(winningRepository.getTotalPrize(), expectedTotalPrize);
+    }
+
 }
