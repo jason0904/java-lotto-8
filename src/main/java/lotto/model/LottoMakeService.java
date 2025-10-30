@@ -16,7 +16,8 @@ public class LottoMakeService {
         return new Lotto(lottoNumbers);
     }
 
-    public LottoRepository makeLottos(Long count) {
+    public LottoRepository makeLottos(Long amount) {
+        int count = (int)(amount / LottoRule.PURCHASE_UNIT.getValue());
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             lottos.add(makeLotto());
