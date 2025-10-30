@@ -22,6 +22,16 @@ public class WinningRepository {
         winningCounts.put(winningCondition, winningCounts.getOrDefault(winningCondition, 0L) + 1L);
     }
 
+    public Long getTotalPrize() {
+        long totalPrize = 0L;
+        for (Map.Entry<WinningCondition, Long> entry : winningCounts.entrySet()) {
+            WinningCondition condition = entry.getKey();
+            Long count = entry.getValue();
+            totalPrize += condition.getPrize() * count;
+        }
+        return totalPrize;
+    }
+
     public Map<WinningCondition, Long> getAllCounts() {
         return Collections.unmodifiableMap(winningCounts);
     }
