@@ -32,12 +32,18 @@ public class LottoController {
 
     public void run() {
         PurchaseAmount purchaseAmount = errorCatch(() -> lottoInputView.purchaseInput());
+        lottoOutputView.printNewLine();
+
         LottoRepository lottoRepository = makeLottos(purchaseAmount);
+        lottoOutputView.printNewLine();
 
         WinningNumber winningNumber = errorCatch(() -> lottoInputView.winningNumberInput());
-        BonusNumber bonusNumber = errorCatch(() -> lottoInputView.bonusNumberInput(winningNumber));
-        WinningRepository winningRepository = lotteryCheck(lottoRepository, winningNumber, bonusNumber);
+        lottoOutputView.printNewLine();
 
+        BonusNumber bonusNumber = errorCatch(() -> lottoInputView.bonusNumberInput(winningNumber));
+        lottoOutputView.printNewLine();
+
+        WinningRepository winningRepository = lotteryCheck(lottoRepository, winningNumber, bonusNumber);
         printProfitRate(purchaseAmount, winningRepository);
     }
 
