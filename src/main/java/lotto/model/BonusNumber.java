@@ -7,15 +7,16 @@ public class BonusNumber {
 
     private final int value;
 
-    public BonusNumber(String value, WinningNumber winningNumber) {
-        validate(value, winningNumber);
-        this.value = Integer.parseInt(value);
+    public BonusNumber(String numberText, WinningNumber winningNumber) {
+        validate(numberText, winningNumber);
+        this.value = Integer.parseInt(numberText);
     }
 
-    private void validate(String value, WinningNumber winningNumber) {
-        validateNumberIsInteger(value);
-        validateNumberRange(Integer.parseInt(value));
-        validateDuplicateWithWinningNumbers(Integer.parseInt(value), winningNumber);
+    private void validate(String numberText, WinningNumber winningNumber) {
+        validateNumberIsInteger(numberText);
+        int parsed = Integer.parseInt(numberText);
+        validateNumberRange(parsed);
+        validateDuplicateWithWinningNumbers(parsed, winningNumber);
     }
 
     private void validateNumberIsInteger(String numberText) {
