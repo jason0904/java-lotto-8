@@ -1,13 +1,12 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.util.stream.IntStream;
 import lotto.config.LottoRule;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
 import lotto.model.PurchaseAmount;
-
-import java.util.List;
-import java.util.ArrayList;
 
 public class LottoMakeService {
 
@@ -20,11 +19,9 @@ public class LottoMakeService {
     }
 
     public LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
-        int count = (int) (purchaseAmount.getPurchaseAmount() / LottoRule.PURCHASE_UNIT.getValue());
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            lottos.add(makeLotto());
-        }
+        List<Lotto> lottos = IntStream.range(0, purchaseAmount.getLottoCount())
+                .mapToObj(i -> makeLotto())
+                .toList();
         return new LottoRepository(lottos);
     }
 }
