@@ -60,4 +60,11 @@ public class PurchaseAmountTest {
         assertEquals(ErrorMessage.PURCHASE_AMOUNT_NOT_LONG.getMessage(), exception.getMessage());
     }
 
+    @Test
+    @DisplayName("로또 구매 갯수 계산 테스트")
+    void testGetLottoCount() {
+        PurchaseAmount purchaseAmount = new PurchaseAmount("5000");
+        assertEquals(5, purchaseAmount.getLottoCount());
+    }
+
 }
