@@ -18,7 +18,6 @@ public class LotteryCheckServiceTest {
     @Test
     @DisplayName("당첨 기록 확인 테스트")
     void testLotteryCheckService() {
-
         LottoRepository lottoRepository = new LottoRepository(List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 1등
                 new Lotto(List.of(1, 2, 3, 4, 5, 7)), // 2등
