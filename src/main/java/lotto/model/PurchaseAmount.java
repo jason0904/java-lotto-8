@@ -10,6 +10,10 @@ public class PurchaseAmount {
         validate(purchaseAmountText);
         purchaseAmount = Long.parseLong(purchaseAmountText);
     }
+    
+    public Long getPurchaseAmount() {
+        return purchaseAmount;
+    }
 
     private void validate(String purchaseAmountText) {
         validateAmountIsLong(purchaseAmountText);
@@ -17,10 +21,6 @@ public class PurchaseAmount {
         validatePositiveAmount(parsed);
         validateZeroAmount(parsed);
         validateUnitAmount(parsed);
-    }
-
-    public Long getPurchaseAmount() {
-        return purchaseAmount;
     }
 
     private void validatePositiveAmount(Long purchaseAmount) {
