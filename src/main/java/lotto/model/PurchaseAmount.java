@@ -16,8 +16,7 @@ public class PurchaseAmount {
     }
 
     private void validate(String purchaseAmountText) {
-        validateAmountIsLong(purchaseAmountText);
-        Long parsed = Long.parseLong(purchaseAmountText);
+        Long parsed = validateLongAndParse(purchaseAmountText);
         validatePositiveAmount(parsed);
         validateZeroAmount(parsed);
         validateUnitAmount(parsed);
@@ -35,9 +34,9 @@ public class PurchaseAmount {
         }
     }
 
-    private void validateAmountIsLong(String purchaseAmount) {
+    private Long validateLongAndParse(String purchaseAmount) {
         try {
-            Long.parseLong(purchaseAmount);
+            return Long.parseLong(purchaseAmount);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_NOT_LONG.getMessage());
         }
