@@ -31,25 +31,39 @@ public class LottoController {
     }
 
     public void run() {
+        PurchaseAmount purchaseAmount = purchaseInput();
+        LottoRepository lottoRepository = makeLottos(purchaseAmount);
+        WinningNumber winningNumber = winningNumberInput();
+        BonusNumber bonusNumber = bonusNumberInput(winningNumber);
+        WinningRepository winningRepository = lotteryCheck(lottoRepository, winningNumber, bonusNumber);
+        printProfitRate(purchaseAmount, winningRepository);
+    }
+
+    private PurchaseAmount purchaseInput() {
         PurchaseAmount purchaseAmount = errorCatch(() -> lottoInputView.purchaseInput());
         lottoOutputView.printNewLine();
+        
+        return purchaseAmount;
+    }
 
-        LottoRepository lottoRepository = makeLottos(purchaseAmount);
-        lottoOutputView.printNewLine();
-
+    private WinningNumber winningNumberInput() {
         WinningNumber winningNumber = errorCatch(() -> lottoInputView.winningNumberInput());
         lottoOutputView.printNewLine();
 
+        return winningNumber;
+    }
+
+    private BonusNumber bonusNumberInput(WinningNumber winningNumber) {
         BonusNumber bonusNumber = errorCatch(() -> lottoInputView.bonusNumberInput(winningNumber));
         lottoOutputView.printNewLine();
 
-        WinningRepository winningRepository = lotteryCheck(lottoRepository, winningNumber, bonusNumber);
-        printProfitRate(purchaseAmount, winningRepository);
+        return bonusNumber;
     }
 
     private LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
         LottoRepository lottoRepository = lottoMakeService.makeLottos(purchaseAmount.getPurchaseAmount());
         lottoOutputView.printLottos(lottoRepository, purchaseAmount);
+        lottoOutputView.printNewLine();
 
         return lottoRepository;
     }
