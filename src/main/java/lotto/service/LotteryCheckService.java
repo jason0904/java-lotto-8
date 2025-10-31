@@ -9,7 +9,8 @@ import lotto.model.WinningRepository;
 
 public class LotteryCheckService {
 
-    public void lotteryCheck(LottoRepository lottoRepository, WinningRepository winningRepository, WinningNumber winningNumber, BonusNumber bonusNumber) {
+    public void lotteryCheck(LottoRepository lottoRepository, WinningRepository winningRepository,
+            WinningNumber winningNumber, BonusNumber bonusNumber) {
         for (Lotto lotto : lottoRepository.getLottos()) {
             WinningCondition winningCondition = WinningCondition.fromMatchCounts(lotto, winningNumber, bonusNumber);
             winningRepository.addCount(winningCondition);
