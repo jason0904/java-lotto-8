@@ -22,14 +22,23 @@ public class WinningRepository {
         winningCounts.put(winningCondition, winningCounts.getOrDefault(winningCondition, 0L) + 1L);
     }
 
-    public Long getTotalPrize() {
+    public Map<WinningCondition, Long> getAllCounts() {
+        return Collections.unmodifiableMap(winningCounts);
+    }
+
+    public double calculateTotalProfitRate(PurchaseAmount purchaseAmount) {
+        Long totalPrize = getTotalPrize();
+        Long totalCost = purchaseAmount.getPurchaseAmount();
+        if (totalCost == 0) {
+            return 0.0;
+        }
+        return (double) totalPrize / totalCost * 100;
+    }
+
+    private Long getTotalPrize() {
         return winningCounts.entrySet().stream()
                 .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
                 .sum();
-    }
-
-    public Map<WinningCondition, Long> getAllCounts() {
-        return Collections.unmodifiableMap(winningCounts);
     }
 
     
