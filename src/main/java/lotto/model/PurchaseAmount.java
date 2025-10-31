@@ -15,6 +15,10 @@ public class PurchaseAmount {
         return purchaseAmount;
     }
 
+    public int getLottoCount() {
+        return (int) (purchaseAmount / LottoRule.PURCHASE_UNIT.getValue());
+    }
+
     private void validate(String purchaseAmountText) {
         Long parsed = validateLongAndParse(purchaseAmountText);
         validatePositiveAmount(parsed);
