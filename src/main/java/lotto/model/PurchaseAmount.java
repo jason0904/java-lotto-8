@@ -13,19 +13,24 @@ public class PurchaseAmount {
 
     private void validate(String purchaseAmountText) {
         validateAmountIsLong(purchaseAmountText);
-        validatePositiveAmount(Long.parseLong(purchaseAmountText));
-        validateZeroAmount(Long.parseLong(purchaseAmountText));
-        validateUnitAmount(Long.parseLong(purchaseAmountText));
+        Long parsed = Long.parseLong(purchaseAmountText);
+        validatePositiveAmount(parsed);
+        validateZeroAmount(parsed);
+        validateUnitAmount(parsed);
+    }
+
+    public Long getPurchaseAmount() {
+        return purchaseAmount;
     }
 
     private void validatePositiveAmount(Long purchaseAmount) {
-        if(purchaseAmount < 0) {
+        if (purchaseAmount < 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_POSITIVE.getMessage());
         }
     }
 
     private void validateZeroAmount(Long purchaseAmount) {
-        if(purchaseAmount == 0) {
+        if (purchaseAmount == 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_ZERO.getMessage());
         }
     }
@@ -39,13 +44,9 @@ public class PurchaseAmount {
     }
 
     private void validateUnitAmount(Long purchaseAmount) {
-        if(purchaseAmount % LottoRule.PURCHASE_UNIT.getValue() != 0) {
+        if (purchaseAmount % LottoRule.PURCHASE_UNIT.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_UNIT.getMessage());
         }
-    }
-
-    public Long getPurchaseAmount() {
-        return purchaseAmount;
     }
 
 }
