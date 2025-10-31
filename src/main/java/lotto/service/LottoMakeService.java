@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.config.LottoRule;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
+import lotto.model.PurchaseAmount;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ public class LottoMakeService {
         return new Lotto(lottoNumbers);
     }
 
-    public LottoRepository makeLottos(Long amount) {
-        int count = (int)(amount / LottoRule.PURCHASE_UNIT.getValue());
+    public LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
+        int count = (int)(purchaseAmount.getPurchaseAmount() / LottoRule.PURCHASE_UNIT.getValue());
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             lottos.add(makeLotto());

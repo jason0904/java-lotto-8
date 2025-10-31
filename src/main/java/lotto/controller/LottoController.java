@@ -61,7 +61,7 @@ public class LottoController {
     }
 
     private LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
-        LottoRepository lottoRepository = lottoMakeService.makeLottos(purchaseAmount.getPurchaseAmount());
+        LottoRepository lottoRepository = lottoMakeService.makeLottos(purchaseAmount);
         lottoOutputView.printLottos(lottoRepository, purchaseAmount);
         lottoOutputView.printNewLine();
 
