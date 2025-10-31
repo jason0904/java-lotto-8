@@ -6,14 +6,14 @@ import java.util.Collections;
 
 public class LottoRepository {
     
-    private final List<Lotto> lottos = new ArrayList<>();
+    private final List<Lotto> lottos;
 
     public LottoRepository(List<Lotto> lottos) {
-        this.lottos.addAll(lottos);
+        this.lottos = Collections.unmodifiableList(new ArrayList<>(lottos));
     }
 
     public List<Lotto> getLottos() {
-        return Collections.unmodifiableList(lottos);
+        return lottos;
     }
 
 }
