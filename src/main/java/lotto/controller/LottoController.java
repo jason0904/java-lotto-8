@@ -40,21 +40,21 @@ public class LottoController {
     }
 
     private PurchaseAmount purchaseInput() {
-        PurchaseAmount purchaseAmount = errorCatch(() -> lottoInputView.purchaseInput());
+        PurchaseAmount purchaseAmount = retryOnInvalidInput(() -> lottoInputView.purchaseInput());
         lottoOutputView.printNewLine();
         
         return purchaseAmount;
     }
 
     private WinningNumber winningNumberInput() {
-        WinningNumber winningNumber = errorCatch(() -> lottoInputView.winningNumberInput());
+        WinningNumber winningNumber = retryOnInvalidInput(() -> lottoInputView.winningNumberInput());
         lottoOutputView.printNewLine();
 
         return winningNumber;
     }
 
     private BonusNumber bonusNumberInput(WinningNumber winningNumber) {
-        BonusNumber bonusNumber = errorCatch(() -> lottoInputView.bonusNumberInput(winningNumber));
+        BonusNumber bonusNumber = retryOnInvalidInput(() -> lottoInputView.bonusNumberInput(winningNumber));
         lottoOutputView.printNewLine();
 
         return bonusNumber;
@@ -81,12 +81,12 @@ public class LottoController {
         lottoOutputView.printProfitRate(profitRate);
     }
 
-    private <T> T errorCatch(Supplier<T> function) {
+    private <T> T retryOnInvalidInput(Supplier<T> function) {
         while (true) {
             try {
                 return function.get();
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                lottoOutputView.printError(e.getMessage());
             }
         }
     }

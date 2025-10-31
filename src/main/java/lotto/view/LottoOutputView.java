@@ -37,6 +37,10 @@ public class LottoOutputView {
         System.out.printf("총 수익률은 %.1f%%입니다.\n", profitRate);
     }
 
+    public void printError(String message) {
+        System.out.println(message);
+    }
+
     public void printNewLine() {
         System.out.println();
     }
