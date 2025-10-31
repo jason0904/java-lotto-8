@@ -23,13 +23,9 @@ public class WinningRepository {
     }
 
     public Long getTotalPrize() {
-        long totalPrize = 0L;
-        for (Map.Entry<WinningCondition, Long> entry : winningCounts.entrySet()) {
-            WinningCondition condition = entry.getKey();
-            Long count = entry.getValue();
-            totalPrize += condition.getPrize() * count;
-        }
-        return totalPrize;
+        return winningCounts.entrySet().stream()
+                .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
+                .sum();
     }
 
     public Map<WinningCondition, Long> getAllCounts() {
