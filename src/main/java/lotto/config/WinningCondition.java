@@ -7,7 +7,7 @@ public enum WinningCondition {
     THIRD(5,0,1_500_000L),
     FOURTH(4,0,50_000L),
     FIFTH(3,0,5_000L),
-    NONE(0,0,0L);
+    NO_PRIZE(0,0,0L);
 
     private final int matchCount;
     private final int bonusMatchCount;
