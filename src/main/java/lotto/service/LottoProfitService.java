@@ -1,4 +1,7 @@
-package lotto.model;
+package lotto.service;
+
+import lotto.model.PurchaseAmount;
+import lotto.model.WinningRepository;
 
 public class LottoProfitService {
 

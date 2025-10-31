@@ -1,7 +1,9 @@
-package lotto.model;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.config.LottoRule;
+import lotto.model.Lotto;
+import lotto.model.LottoRepository;
 
 import java.util.List;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.config.WinningCondition;
+import lotto.model.PurchaseAmount;
+import lotto.model.WinningRepository;
 
 public class LottoProfitServiceTest {
 

@@ -7,11 +7,11 @@ import lotto.view.LottoOutputView;
 import lotto.model.PurchaseAmount;
 import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
+import lotto.service.LotteryCheckService;
+import lotto.service.LottoMakeService;
+import lotto.service.LottoProfitService;
 import lotto.model.BonusNumber;
-import lotto.model.LotteryCheckService;
-import lotto.model.LottoMakeService;
 import lotto.model.LottoRepository;
-import lotto.model.LottoProfitService;
 
 public class LottoController {
 
