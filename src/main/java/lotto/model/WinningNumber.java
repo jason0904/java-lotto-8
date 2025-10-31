@@ -30,7 +30,7 @@ public class WinningNumber {
     }
 
     private void validateLottoSize(int size) {
-        if (size != LottoRule.LOTTO_SIZE.getValue()) {
+        if (size != LottoRule.SIZE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_SIZE.getMessage());
         }
     }

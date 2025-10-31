@@ -8,6 +8,7 @@ import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
 
 public class Lotto {
+    
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -17,7 +18,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LottoRule.LOTTO_SIZE.getValue()) {
+        if (numbers.size() != LottoRule.SIZE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_SIZE.getMessage());
         }
     }
