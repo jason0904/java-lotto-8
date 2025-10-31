@@ -30,17 +30,15 @@ public class WinningRepositoryTest {
     }
 
     @Test
-    @DisplayName("WinningRepository 총 상금 계산 테스트")
-    void testGetTotalPrize() {
+    @DisplayName("WinningRepository 총 수익률 계산 테스트")
+    void testCalculateTotalProfitRate() {
         WinningRepository winningRepository = new WinningRepository();
-        winningRepository.addCount(WinningCondition.FIRST);
-        winningRepository.addCount(WinningCondition.SECOND);
-        winningRepository.addCount(WinningCondition.THIRD);
+        PurchaseAmount purchaseAmount = new PurchaseAmount("1000");
+        winningRepository.addCount(WinningCondition.FIRST); // 2,000,000,000원
+        double profitRate = winningRepository.calculateTotalProfitRate(purchaseAmount);
 
-        Long expectedTotalPrize = WinningCondition.FIRST.getPrize() + WinningCondition.SECOND.getPrize()
-                + WinningCondition.THIRD.getPrize();
+        assertEquals(profitRate, WinningCondition.FIRST.getPrize() / purchaseAmount.getPurchaseAmount() * 100);
 
-        assertEquals(winningRepository.getTotalPrize(), expectedTotalPrize);
     }
 
 }
