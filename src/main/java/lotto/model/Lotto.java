@@ -30,20 +30,20 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LottoRule.SIZE.getValue()) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_SIZE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_SIZE.getMessage());
         }
     }
 
     private void validateNumberRange(int value) {
         if (value < LottoRule.MIN_NUMBER.getValue() || value > LottoRule.MAX_NUMBER.getValue()) {
-            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_RANGE.getMessage());
         }
     }
 
     private void validateDuplicateNumbers(List<Integer> numbers) {
         long distinctCount = numbers.stream().distinct().count();
         if (distinctCount != numbers.size()) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_LOTTO_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
         }
     }
 

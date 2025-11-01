@@ -28,7 +28,7 @@ public class WinningNumber {
                     .map(Integer::parseInt)
                     .toList();
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
         }
     }
 
@@ -40,14 +40,14 @@ public class WinningNumber {
 
     private void validateLottoSize(List<Integer> numbers) {
         if (numbers.size() != LottoRule.SIZE.getValue()) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_SIZE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_SIZE.getMessage());
         }
     }
 
     private void validateNumberRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < LottoRule.MIN_NUMBER.getValue() || number > LottoRule.MAX_NUMBER.getValue()) {
-                throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_RANGE.getMessage());
+                throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_RANGE.getMessage());
             }
         }
     }
@@ -55,7 +55,7 @@ public class WinningNumber {
     private void validateDuplicateNumber(List<Integer> numbers) {
         Set<Integer> distinctNumbers = new HashSet<>(numbers);
         if (distinctNumbers.size() != numbers.size()) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_WINNING_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
         }
     }
     

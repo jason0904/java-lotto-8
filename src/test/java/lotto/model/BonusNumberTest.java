@@ -24,13 +24,13 @@ public class BonusNumberTest {
             new BonusNumber(String.valueOf(LottoRule.MAX_NUMBER.getValue() + 1), winningNumber);
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_RANGE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_RANGE.getMessage(), exception.getMessage());
 
         exception = assertThrows(IllegalArgumentException.class, () -> {
             new BonusNumber(String.valueOf(LottoRule.MIN_NUMBER.getValue() - 1), winningNumber);
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_RANGE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_RANGE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -55,6 +55,6 @@ public class BonusNumberTest {
             new BonusNumber(invalidInput, winningNumber);
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage(), exception.getMessage());
     }
 }

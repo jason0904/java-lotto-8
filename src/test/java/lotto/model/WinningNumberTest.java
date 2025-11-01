@@ -20,7 +20,7 @@ public class WinningNumberTest {
             new WinningNumber(java.util.Arrays.asList("1", "2", "3", "4", "5"));
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_SIZE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_LOTTO_SIZE.getMessage(), exception.getMessage());
     }
 
     @ParameterizedTest
@@ -31,7 +31,7 @@ public class WinningNumberTest {
             new WinningNumber(java.util.Arrays.asList("1", "2", "3", "4", "5", invalidInput));
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -41,13 +41,13 @@ public class WinningNumberTest {
             new WinningNumber(java.util.Arrays.asList("1", "2", "3", "4", "5", String.valueOf(LottoRule.MAX_NUMBER.getValue() + 1)));
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_RANGE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_RANGE.getMessage(), exception.getMessage());
 
         exception = assertThrows(IllegalArgumentException.class, () -> {
             new WinningNumber(java.util.Arrays.asList("0", "2", "3", "4", "5", String.valueOf(LottoRule.MIN_NUMBER.getValue() - 1)));
         });
 
-        assertEquals(ErrorMessage.WINNING_NUMBER_RANGE.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.INVALID_NUMBER_RANGE.getMessage(), exception.getMessage());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class WinningNumberTest {
             new WinningNumber(java.util.Arrays.asList("1", "2", "3", "4", "5", "5"));
         });
 
-        assertEquals(ErrorMessage.DUPLICATE_WINNING_NUMBER.getMessage(), exception.getMessage());
+        assertEquals(ErrorMessage.DUPLICATE_NUMBERS.getMessage(), exception.getMessage());
     }
 
 }

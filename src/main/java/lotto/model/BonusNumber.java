@@ -23,13 +23,13 @@ public class BonusNumber {
         try {
             Integer.parseInt(numberText);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_FORMAT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
         }
     }
 
     private void validateNumberRange(int value) {
         if (value < LottoRule.MIN_NUMBER.getValue() || value > LottoRule.MAX_NUMBER.getValue()) {
-            throw new IllegalArgumentException(ErrorMessage.WINNING_NUMBER_RANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_RANGE.getMessage());
         }
     }
 
