@@ -1,9 +1,8 @@
 package lotto.controller;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-
-import camp.nextstep.edu.missionutils.Console;
 import lotto.model.BonusNumber;
 import lotto.model.PurchaseAmount;
 import lotto.model.WinningNumber;
@@ -43,5 +42,4 @@ public class InputController {
             throw new IllegalArgumentException(ErrorMessage.STRING_EMPTY.getMessage());
         }
     }
-
 }

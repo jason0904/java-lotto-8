@@ -2,15 +2,15 @@ package lotto.controller;
 
 import java.util.function.Supplier;
 
-import lotto.view.LottoOutputView;
+import lotto.model.BonusNumber;
+import lotto.model.LottoRepository;
 import lotto.model.PurchaseAmount;
 import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
 import lotto.service.LotteryCheckService;
 import lotto.service.LottoMakeService;
 import lotto.service.LottoProfitService;
-import lotto.model.BonusNumber;
-import lotto.model.LottoRepository;
+import lotto.view.LottoOutputView;
 
 public class LottoController {
 
@@ -21,7 +21,8 @@ public class LottoController {
     private final LottoProfitService lottoProfitService;
 
     public LottoController(InputController inputController, LottoOutputView lottoOutputView,
-            LottoMakeService lottoMakeService, LotteryCheckService lotteryCheckService, LottoProfitService lottoProfitService) {
+            LottoMakeService lottoMakeService, LotteryCheckService lotteryCheckService,
+            LottoProfitService lottoProfitService) {
         this.inputController = inputController;
         this.lottoOutputView = lottoOutputView;
         this.lottoMakeService = lottoMakeService;
@@ -41,7 +42,7 @@ public class LottoController {
     private PurchaseAmount purchaseInput() {
         PurchaseAmount purchaseAmount = retryOnInvalidInput(() -> inputController.purchaseInput());
         lottoOutputView.printNewLine();
-        
+
         return purchaseAmount;
     }
 
@@ -67,7 +68,8 @@ public class LottoController {
         return lottoRepository;
     }
 
-    private WinningRepository lotteryCheck(LottoRepository lottoRepository, WinningNumber winningNumber, BonusNumber bonusNumber) {
+    private WinningRepository lotteryCheck(LottoRepository lottoRepository, WinningNumber winningNumber,
+            BonusNumber bonusNumber) {
         WinningRepository winningRepository = new WinningRepository();
         lotteryCheckService.lotteryCheck(lottoRepository, winningRepository, winningNumber, bonusNumber);
         lottoOutputView.printLotteryResult(winningRepository);
@@ -89,5 +91,4 @@ public class LottoController {
             }
         }
     }
-
 }

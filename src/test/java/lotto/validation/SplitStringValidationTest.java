@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class SplitStringValidationTest {
-    
+
     @Test
     @DisplayName("입력 값이 쉼표(,)로 시작할 경우 예외 발생 테스트")
     void validateStringStartWithComma() {
@@ -28,8 +28,7 @@ public class SplitStringValidationTest {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             SplitStringValidation.validateComma(input);
         });
-        
+
         assertEquals(ErrorMessage.STRING_ENDS_WITH_COMMA.getMessage(), exception.getMessage());
     }
-
 }

@@ -3,15 +3,13 @@ package lotto.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
+import lotto.config.LottoRule;
+import lotto.validation.ErrorMessage;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import org.junit.jupiter.api.DisplayName;
-
-import lotto.config.LottoRule;
-import lotto.validation.ErrorMessage;
-
-import java.util.List;
 
 public class BonusNumberTest {
 
@@ -37,16 +35,16 @@ public class BonusNumberTest {
     @DisplayName("보너스 번호가 당첨 번호와 중복 예외 발생 테스트")
     void bonusNumberDuplicateWithWinningNumber() {
         WinningNumber winningNumber = new WinningNumber(List.of("1", "2", "3", "4", "5", "6"));
-        
+
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             new BonusNumber("3", winningNumber);
         });
-        
+
         assertEquals(ErrorMessage.DUPLICATE_BONUS_NUMBER.getMessage(), exception.getMessage());
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"A", "!", "3.5", " "})
+    @ValueSource(strings = { "A", "!", "3.5", " " })
     @DisplayName("보너스 번호의 입력이 정수형식이 아닐 경우 예외 발생 테스트")
     void bonusNumberNotIntegerFormat(String invalidInput) {
         WinningNumber winningNumber = new WinningNumber(List.of("1", "2", "3", "4", "5", "6"));

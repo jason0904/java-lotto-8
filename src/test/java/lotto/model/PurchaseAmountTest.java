@@ -3,15 +3,14 @@ package lotto.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import lotto.validation.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import lotto.validation.ErrorMessage;
-
 public class PurchaseAmountTest {
-    
+
     @Test
     @DisplayName("구입 금액 생성 테스트")
     void testPurchaseAmountCreation() {
@@ -51,12 +50,12 @@ public class PurchaseAmountTest {
 
     @ParameterizedTest
     @DisplayName("금액이 정수가 아닐때 예외 발생 테스트")
-    @ValueSource(strings = {"1000.5", "one000", "abc"})
+    @ValueSource(strings = { "1000.5", "one000", "abc" })
     void testPurchaseAmountNotLongValidation(String invalidAmount) {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             new PurchaseAmount(invalidAmount);
         });
-        
+
         assertEquals(ErrorMessage.PURCHASE_AMOUNT_NOT_LONG.getMessage(), exception.getMessage());
     }
 
@@ -66,5 +65,4 @@ public class PurchaseAmountTest {
         PurchaseAmount purchaseAmount = new PurchaseAmount("5000");
         assertEquals(5, purchaseAmount.getLottoCount());
     }
-
 }

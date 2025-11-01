@@ -51,5 +51,4 @@ public class PurchaseAmount {
             throw new IllegalArgumentException(ErrorMessage.PURCHASE_AMOUNT_UNIT.getMessage());
         }
     }
-
 }

@@ -42,5 +42,4 @@ public class BonusNumber {
     public int getValue() {
         return value;
     }
-
 }

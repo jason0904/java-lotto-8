@@ -1,16 +1,14 @@
 package lotto.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import lotto.config.LottoRule;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
 import lotto.model.PurchaseAmount;
-
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class LottoMakeServiceTest {
     
@@ -32,6 +30,5 @@ public class LottoMakeServiceTest {
 
             assertThat(lotto.getNumbers()).isSorted();
         }
-
     }
 }

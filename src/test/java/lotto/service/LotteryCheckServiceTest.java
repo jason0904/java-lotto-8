@@ -2,16 +2,15 @@ package lotto.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import java.util.List;
-
 import lotto.config.WinningCondition;
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
 import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class LotteryCheckServiceTest {
 
@@ -38,5 +37,4 @@ public class LotteryCheckServiceTest {
             assertEquals(1L, winningRepository.getCount(winningCondition));
         }
     }
-
 }

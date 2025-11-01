@@ -15,5 +15,4 @@ public class LottoRepository {
     public List<Lotto> getLottos() {
         return lottos;
     }
-
 }

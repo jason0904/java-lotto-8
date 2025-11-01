@@ -3,7 +3,6 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import lotto.config.LottoRule;
 import lotto.validation.ErrorMessage;
 
@@ -46,5 +45,4 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBERS.getMessage());
         }
     }
-
 }

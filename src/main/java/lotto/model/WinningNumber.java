@@ -1,7 +1,6 @@
 package lotto.model;
 
 import java.util.List;
-
 import lotto.validation.ErrorMessage;
 
 public class WinningNumber {
@@ -26,5 +25,4 @@ public class WinningNumber {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getMessage());
         }
     }
-    
 }

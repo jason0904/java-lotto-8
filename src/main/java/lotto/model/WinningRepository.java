@@ -2,7 +2,6 @@ package lotto.model;
 
 import java.util.EnumMap;
 import java.util.Objects;
-
 import lotto.config.WinningCondition;
 
 public class WinningRepository {
@@ -30,6 +29,4 @@ public class WinningRepository {
                 .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
                 .sum();
     }
-
-    
 }

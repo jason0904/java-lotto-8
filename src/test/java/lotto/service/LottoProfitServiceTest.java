@@ -2,12 +2,11 @@ package lotto.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
 import lotto.config.WinningCondition;
 import lotto.model.PurchaseAmount;
 import lotto.model.WinningRepository;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class LottoProfitServiceTest {
 
@@ -25,5 +24,4 @@ public class LottoProfitServiceTest {
 
         assertEquals(expectedProfitRate, profitRate);
     }
-
 }

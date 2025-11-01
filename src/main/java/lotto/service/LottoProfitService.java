@@ -13,5 +13,4 @@ public class LottoProfitService {
         }
         return (double) totalPrize / totalCost * 100;
     }
-    
 }

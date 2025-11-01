@@ -8,7 +8,7 @@ public class LottoInputView {
 
     public void showPurchaseInputMessage() {
         System.out.println(INPUT_PURCHASE_AMOUNT_MESSAGE);
-        
+
     }
 
     public void showWinningNumberInputMessage() {
@@ -18,5 +18,4 @@ public class LottoInputView {
     public void showBonusNumberInputMessage() {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
     }
-
 }
