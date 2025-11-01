@@ -10,18 +10,18 @@ import lotto.model.PurchaseAmount;
 
 public class LottoMakeService {
 
-    public Lotto makeLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LottoRule.MIN_NUMBER.getValue(),
-                LottoRule.MAX_NUMBER.getValue(),
-                LottoRule.SIZE.getValue());
-
-        return new Lotto(lottoNumbers);
-    }
-
     public LottoRepository makeLottos(PurchaseAmount purchaseAmount) {
         List<Lotto> lottos = IntStream.range(0, purchaseAmount.getLottoCount())
                 .mapToObj(i -> makeLotto())
                 .toList();
         return new LottoRepository(lottos);
+    }
+
+    private Lotto makeLotto() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(LottoRule.MIN_NUMBER.getValue(),
+                LottoRule.MAX_NUMBER.getValue(),
+                LottoRule.SIZE.getValue());
+
+        return new Lotto(lottoNumbers);
     }
 }
