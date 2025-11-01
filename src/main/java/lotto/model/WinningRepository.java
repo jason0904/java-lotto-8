@@ -1,8 +1,6 @@
 package lotto.model;
 
-import java.util.Collections;
 import java.util.EnumMap;
-import java.util.Map;
 import java.util.Objects;
 
 import lotto.config.WinningCondition;
@@ -22,8 +20,9 @@ public class WinningRepository {
         winningCounts.put(winningCondition, winningCounts.getOrDefault(winningCondition, 0L) + 1L);
     }
 
-    public Map<WinningCondition, Long> getAllCounts() {
-        return Collections.unmodifiableMap(winningCounts);
+    public Long getCount(WinningCondition winningCondition) {
+        Objects.requireNonNull(winningCondition);
+        return winningCounts.getOrDefault(winningCondition, 0L);
     }
 
     public double calculateTotalProfitRate(PurchaseAmount purchaseAmount) {
