@@ -14,8 +14,8 @@ public class WinningRepositoryTest {
     void testWinningRepository() {
         WinningRepository winningRepository = new WinningRepository();
 
-        for (Long count : winningRepository.getAllCounts().values()) {
-            assertEquals(count, 0L);
+        for (WinningCondition condition : WinningCondition.values()) {
+            assertEquals(winningRepository.getCount(condition), 0L);
         }
     }
 
@@ -23,10 +23,10 @@ public class WinningRepositoryTest {
     @DisplayName("WinningRepository 당첨기록 추가 테스트")
     void testAddCount() {
         WinningRepository winningRepository = new WinningRepository();
-        assertEquals(winningRepository.getAllCounts().get(WinningCondition.FIRST), 0L);
+        assertEquals(winningRepository.getCount(WinningCondition.FIRST), 0L);
 
         winningRepository.addCount(WinningCondition.FIRST);
-        assertEquals(winningRepository.getAllCounts().get(WinningCondition.FIRST), 1L);
+        assertEquals(winningRepository.getCount(WinningCondition.FIRST), 1L);
     }
 
     @Test

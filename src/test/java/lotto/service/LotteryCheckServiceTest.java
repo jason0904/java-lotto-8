@@ -35,7 +35,7 @@ public class LotteryCheckServiceTest {
         lotteryCheckService.lotteryCheck(lottoRepository, winningRepository, winningNumber, bonusNumber);
 
         for (WinningCondition winningCondition : WinningCondition.values()) {
-            assertEquals(1L, winningRepository.getAllCounts().get(winningCondition));
+            assertEquals(1L, winningRepository.getCount(winningCondition));
         }
     }
 
