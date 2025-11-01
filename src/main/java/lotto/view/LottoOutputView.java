@@ -10,34 +10,35 @@ import java.util.stream.Collectors;
 
 public class LottoOutputView {
 
-    public void printLottos(LottoRepository lottoRepository, PurchaseAmount purchaseAmount) {
-        System.out.printf("\n%d개를 구매했습니다.\n", purchaseAmount.getLottoCount());
-        for (Lotto lotto : lottoRepository.getLottos()) {
-            String numbers = lotto.getNumbers().stream()
-                    .map(String::valueOf)
-                    .collect(Collectors.joining(", "));
-            System.out.printf("[%s]\n", numbers);
-        }
+    private static final String PURCHASE_COUNT_MESSAGE = "\n%d개를 구매했습니다.\n";
+    private static final String LOTTO_NUMBER_FORMAT = "[%s]\n";
+    private static final String RESULT_HEADER_MESSAGE = "\n당첨 통계\n---";
+    private static final String RESULT_LINE_FORMAT = "%d개 일치%s (%,d원) - %d개\n";
+    private static final String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
+    private static final String BONUS_MATCH_STRING = ", 보너스 볼 일치";
+    private static final String EMPTY_STRING = "";
 
+    public void printLottos(final LottoRepository lottoRepository, final PurchaseAmount purchaseAmount) {
+        System.out.printf(PURCHASE_COUNT_MESSAGE, purchaseAmount.getLottoCount());
+        lottoRepository.getLottos().forEach(lotto -> System.out.printf(LOTTO_NUMBER_FORMAT, formatLottoNumbers(lotto)));
     }
 
-    public void printLotteryResult(WinningRepository winningRepository) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (WinningCondition winningCondition : WinningCondition.values()) {
-            System.out.printf("%d개 일치%s (%,d원) - %d개\n",
+    public void printLotteryResult(final WinningRepository winningRepository) {
+        System.out.println(RESULT_HEADER_MESSAGE);
+        for (final WinningCondition winningCondition : WinningCondition.values()) {
+            System.out.printf(RESULT_LINE_FORMAT,
                     winningCondition.getMatchCount(),
                     getBonusString(winningCondition),
                     winningCondition.getPrize(),
-                    winningRepository.getAllCounts().get(winningCondition));
+                    winningRepository.getCount(winningCondition));
         }
     }
 
-    public void printProfitRate(double profitRate) {
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", profitRate);
+    public void printProfitRate(final double profitRate) {
+        System.out.printf(PROFIT_RATE_MESSAGE, profitRate);
     }
 
-    public void printError(String message) {
+    public void printError(final String message) {
         System.out.println(message);
     }
 
@@ -45,13 +46,16 @@ public class LottoOutputView {
         System.out.println();
     }
 
-    private String getBonusString(WinningCondition winningCondition) {
-        if (winningCondition == WinningCondition.SECOND) {
-            return ", 보너스 볼 일치";
-        }
-        return "";
+    private String formatLottoNumbers(final Lotto lotto) {
+        return lotto.getNumbers().stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
     }
 
-    
-
+    private String getBonusString(final WinningCondition winningCondition) {
+        if (winningCondition == WinningCondition.SECOND) {
+            return BONUS_MATCH_STRING;
+        }
+        return EMPTY_STRING;
+    }
 }
