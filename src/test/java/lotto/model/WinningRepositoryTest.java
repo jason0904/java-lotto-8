@@ -29,16 +29,4 @@ public class WinningRepositoryTest {
         assertEquals(winningRepository.getCount(WinningCondition.FIRST), 1L);
     }
 
-    @Test
-    @DisplayName("WinningRepository 총 수익률 계산 테스트")
-    void testCalculateTotalProfitRate() {
-        WinningRepository winningRepository = new WinningRepository();
-        PurchaseAmount purchaseAmount = new PurchaseAmount("1000");
-        winningRepository.addCount(WinningCondition.FIRST); // 2,000,000,000원
-        double profitRate = winningRepository.calculateTotalProfitRate(purchaseAmount);
-
-        assertEquals(profitRate, WinningCondition.FIRST.getPrize() / purchaseAmount.getPurchaseAmount() * 100);
-
-    }
-
 }

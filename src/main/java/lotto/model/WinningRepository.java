@@ -25,16 +25,7 @@ public class WinningRepository {
         return winningCounts.getOrDefault(winningCondition, 0L);
     }
 
-    public double calculateTotalProfitRate(PurchaseAmount purchaseAmount) {
-        Long totalPrize = getTotalPrize();
-        Long totalCost = purchaseAmount.getPurchaseAmount();
-        if (totalCost == 0) {
-            return 0.0;
-        }
-        return (double) totalPrize / totalCost * 100;
-    }
-
-    private Long getTotalPrize() {
+    public Long getTotalPrize() {
         return winningCounts.entrySet().stream()
                 .mapToLong(entry -> entry.getKey().getPrize() * entry.getValue())
                 .sum();
