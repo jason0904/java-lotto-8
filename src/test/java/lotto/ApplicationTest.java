@@ -51,7 +51,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 공백_입력_예외_테스트() {
         assertSimpleTest(() -> {
-            runException("");
+            runException(" ");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
