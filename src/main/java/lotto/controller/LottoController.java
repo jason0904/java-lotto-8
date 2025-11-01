@@ -2,7 +2,6 @@ package lotto.controller;
 
 import java.util.function.Supplier;
 
-import lotto.view.LottoInputView;
 import lotto.view.LottoOutputView;
 import lotto.model.PurchaseAmount;
 import lotto.model.WinningNumber;
@@ -15,15 +14,15 @@ import lotto.model.LottoRepository;
 
 public class LottoController {
 
-    private final LottoInputView lottoInputView;
+    private final InputController inputController;
     private final LottoOutputView lottoOutputView;
     private final LottoMakeService lottoMakeService;
     private final LotteryCheckService lotteryCheckService;
     private final LottoProfitService lottoProfitService;
 
-    public LottoController(LottoInputView lottoInputView, LottoOutputView lottoOutputView,
+    public LottoController(InputController inputController, LottoOutputView lottoOutputView,
             LottoMakeService lottoMakeService, LotteryCheckService lotteryCheckService, LottoProfitService lottoProfitService) {
-        this.lottoInputView = lottoInputView;
+        this.inputController = inputController;
         this.lottoOutputView = lottoOutputView;
         this.lottoMakeService = lottoMakeService;
         this.lotteryCheckService = lotteryCheckService;
@@ -40,21 +39,21 @@ public class LottoController {
     }
 
     private PurchaseAmount purchaseInput() {
-        PurchaseAmount purchaseAmount = retryOnInvalidInput(() -> lottoInputView.purchaseInput());
+        PurchaseAmount purchaseAmount = retryOnInvalidInput(() -> inputController.purchaseInput());
         lottoOutputView.printNewLine();
         
         return purchaseAmount;
     }
 
     private WinningNumber winningNumberInput() {
-        WinningNumber winningNumber = retryOnInvalidInput(() -> lottoInputView.winningNumberInput());
+        WinningNumber winningNumber = retryOnInvalidInput(() -> inputController.winningNumberInput());
         lottoOutputView.printNewLine();
 
         return winningNumber;
     }
 
     private BonusNumber bonusNumberInput(WinningNumber winningNumber) {
-        BonusNumber bonusNumber = retryOnInvalidInput(() -> lottoInputView.bonusNumberInput(winningNumber));
+        BonusNumber bonusNumber = retryOnInvalidInput(() -> inputController.bonusNumberInput(winningNumber));
         lottoOutputView.printNewLine();
 
         return bonusNumber;
