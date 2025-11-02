@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class WinningConditionTest {
 
     @Test
-    @DisplayName("당첨 기록 확인 테스트")
+    @DisplayName("당첨 조건 확인 테스트")
     void testLotteryCheckService() {
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)), // 1등
