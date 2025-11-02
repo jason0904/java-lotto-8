@@ -3,10 +3,11 @@ package lotto.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-import lotto.config.WinningCondition;
+
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
+import lotto.model.WinningCondition;
 import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
 import org.junit.jupiter.api.DisplayName;

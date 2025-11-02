@@ -1,9 +1,6 @@
-package lotto.config;
+package lotto.model;
 
 import java.util.Arrays;
-import lotto.model.BonusNumber;
-import lotto.model.Lotto;
-import lotto.model.WinningNumber;
 
 public enum WinningCondition {
     // 당첨 번호 일치 갯수, 보너스번호 일치갯수, 상금

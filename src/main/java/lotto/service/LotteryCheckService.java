@@ -1,9 +1,9 @@
 package lotto.service;
 
-import lotto.config.WinningCondition;
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.LottoRepository;
+import lotto.model.WinningCondition;
 import lotto.model.WinningNumber;
 import lotto.model.WinningRepository;
 

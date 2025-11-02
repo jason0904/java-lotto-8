@@ -3,8 +3,8 @@ package lotto.view;
 import lotto.model.LottoRepository;
 import lotto.model.Lotto;
 import lotto.model.PurchaseAmount;
+import lotto.model.WinningCondition;
 import lotto.model.WinningRepository;
-import lotto.config.WinningCondition;
 
 import java.util.stream.Collectors;
 

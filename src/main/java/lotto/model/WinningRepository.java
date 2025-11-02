@@ -2,7 +2,6 @@ package lotto.model;
 
 import java.util.EnumMap;
 import java.util.Objects;
-import lotto.config.WinningCondition;
 
 public class WinningRepository {
 

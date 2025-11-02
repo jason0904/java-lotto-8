@@ -2,8 +2,8 @@ package lotto.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import lotto.config.WinningCondition;
 import lotto.model.PurchaseAmount;
+import lotto.model.WinningCondition;
 import lotto.model.WinningRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

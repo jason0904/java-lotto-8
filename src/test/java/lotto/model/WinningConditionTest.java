@@ -1,4 +1,4 @@
-package lotto.config;
+package lotto.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
